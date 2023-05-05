@@ -267,11 +267,10 @@ $(document).ready(function() {
                                           
                                           <div class="col-sm-4 dateGroup">
                                             <label for="ListView">List View</label>
-                                            <select id="display-mode" class="form-control input-sm" onchange="toggleThumbnails()">
-                                            
+                                            <select id="display-mode" onchange="toggleThumbnails()">
+                                              <option value="textthumbnails">Text and Thumbnails</option>
                                               <option value="text">Text Only</option>
-                                              <option value="compact">Compact</option>
-                                              <option value="thumbnails">Text and Thumbnails</option>
+                                              <option value="compact">Compact View</option>
                                             </select>
                                           </div>
                                           <div class="col-sm-4 dateGroup">
@@ -874,6 +873,11 @@ function toggleThumbnails() {
     $('.thumbnail').show();
     $('td[data-title!="table-drawing"]').show();
     $('td[data-title="table-drawing"]').show();
+  }
+
+  // Hide the "Drawing Images" column if the selected display mode is not "Text and Thumbnails"
+  if (display != 'textthumbnails') {
+    $('td[data-title="table-drawing"]').hide();
   }
 }
 </script>
