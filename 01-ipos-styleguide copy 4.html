@@ -117,6 +117,11 @@
   overflow-x: hidden;
   overflow-y: auto;
 }
+.tab-pane {
+  width: 100%;
+  max-width: 800px; /* set a fixed width for the tab panel */
+  overflow-y: scroll; /* create a vertical scrollbar when necessary */
+}
 .btn {
     margin-left: 0px; 
     margin-bottom: 0px; /* Add margin to the right of each button */
@@ -131,7 +136,10 @@ table tbody tr:active {
   cursor: pointer;
 }
 table tbody tr {
-  height: 10px !important;
+  height: 50px; /* Set the height to the desired value */
+}
+.hidden {
+  display: none;
 }
 
      </style>
@@ -142,7 +150,12 @@ $(document).ready(function() {
   $('#DT_filter').hide();
 });
 </script>
-
+<script>
+    // Remove the "Filter" option from the list of options when the dropdown menu is shown
+    $('.selectpicker').on('shown.bs.select', function () {
+    $(this).find('option[value="Filter"]').remove();
+  });
+</script>
 <script>
     $(document).ready(function() {
         $('#example').DataTable({
@@ -292,9 +305,9 @@ $(document).ready(function() {
                                         <div class="row">
                                       <div class="col-sm-4 dateGroup">
                                         <div class="form-group" id="filterBy">
-                                          <label for="multiselectSample">&nbsp</label>
-                                          <select class="selectpicker" multiple data-live-search="true" onchange="filterByChange(this)">
-                                          <optgroup label="">
+                                          <label for="multiselectSample">Filter</label>
+                                          <select class="selectpicker" multiple data-live-search="true" onchange="filterByChange(this)" placeholder="Filter">
+                                            <optgroup label="">
                                             <option disabled><strong>Filter By APPLICATION STATUS</strong></option>
                                           </optgroup>
                                           <option>Abandoned (Extension of Time possible)</option>
@@ -381,7 +394,7 @@ $(document).ready(function() {
                                             </div>
                                           </td>
                                           <td data-title="table-drawing">
-                                            <p>1.</p>
+                                            <p>(DRAWING IMAGE)</p>
                                           </td>
                                           <td data-title="Objection">
                                             <p><strong>1. Novel aerify snow boots</strong></p>
@@ -400,11 +413,11 @@ $(document).ready(function() {
                                             </div>
                                           </td>
                                           <td data-title="table-drawing">
-                                            <p>2.</p>
+                                            <p>(DRAWING IMAGE)</p>
                                           </td>
                                           <td data-title="Objection">
                                             <p><strong>2. SEPARATE BOOTS</strong></p>
-                                            <p>10202002094R・KIM YONG JUN</p>
+                                            <p>10202002094A・KIM YONG JUN</p>
                                             <p>Priority Claim Date: 2019-11-11・Journal Date: 2020-01-16</p>
                                             <p>Leather boots are provided, which combine the bootys part and the shoes part when in use and separate the boots part and the shoes pa...
                                             </p>
@@ -418,7 +431,7 @@ $(document).ready(function() {
                                             </div>
                                           </td>
                                           <td data-title="table-drawing">
-                                            <p>3</p>
+                                            <p>(DRAWING IMAGE)</p>
                                           </td>
                                           <td data-title="Objection">
                                             <p><strong>3. Refrigerator</strong></p>
@@ -444,7 +457,7 @@ $(document).ready(function() {
                                 <!-- Tab panes -->
                                 <div class="tab-content" id="tab-1">
                                   <div role="tabpanel" class="tab-pane active" id="Bibliographic-data"> 
-                                    <ul style="margin-top: 30px; overflow-y: scroll; height: 1000px; float: left">  
+                                    <ul style="margin-top: 30px;">  
                                       <li>
                                         <label for="name" class="bold-label">Application Number</label>
                                         <span>10202002094R</span>
@@ -510,7 +523,7 @@ $(document).ready(function() {
                                   </div>
                                   
                                   <div role="tabpanel" class="tab-pane" id="Description">
-                                    <ul style="margin-top: 30px; overflow-y: scroll; height: 1000px; float: left">TECHNICAL FIELD
+                                    <ul style="margin-top: 30px; ">TECHNICAL FIELD
 
                                     The Utility model relates snow boots technology, specifically a new inflatable snow boots. Background technique
                                     Snow boots winter season as a practical footwear, popular in recent years. However, existing municipal court in snow deep snow boots when walking area, there will be a security risk. Therefore, the prior art still has the following problems:
@@ -519,32 +532,25 @@ $(document).ready(function() {
                                     3. Using more simple;
                                     4. Inconvenient to use</div>
                                   <div role="tabpanel" class="tab-pane" id="Claims">
-                                    <ul style="margin-top: 30px; overflow-y: scroll; height: 1000px; float: left">1. A New inflatable snow boots, characterised by: including inflatable mattress, inflatable cushion front-end structure of a circular arc, inflatable cushions backend triangular structure, inflatable bottom portion is provided with a wear-resistant reinforcing layer, intermediate inflatable mattress has snow boots place unit, placed on the surface of the snow boots with a plurality of concave portions, snow boots, snow boots placed in the unit in place, and with a bandage fixed.
+                                    <ul style="margin-top: 30px;">1. A New inflatable snow boots, characterised by: including inflatable mattress, inflatable cushion front-end structure of a circular arc, inflatable cushions backend triangular structure, inflatable bottom portion is provided with a wear-resistant reinforcing layer, intermediate inflatable mattress has snow boots place unit, placed on the surface of the snow boots with a plurality of concave portions, snow boots, snow boots placed in the unit in place, and with a bandage fixed.
                                     2. According to the new inflatable snow boots as claimed in claim 1, characterised in that: said inflatable cushions for snow boots twice the area of the sole.
                                     3. According to the new inflatable snow boots according to claim 2, wherein;  the sole including the neel of the snow boots, the foot and front foot, with a plurality of circular projections block heel and the front food, arranged along</div>
                                   </ul>
-                                    <div role="tabpanel" class="tab-pane" id="Drawings"> <ul style="margin-top: 30px; overflow-y: scroll; height: 1000px; float: left">TECHNICAL FIELD
+                                    <div role="tabpanel" class="tab-pane" id="Drawings"> <ul style="margin-top: 30px;">-
 
-                                      The Utility model relates snow boots technology, specifically a new inflatable snow boots. Background technique
-                                      Snow boots winter season as a practical footwear, popular in recent years. However, existing municipal court in snow deep snow boots when walking area, there will be a security risk. Therefore, the prior art still has the following problems:
-                                      1. The snow is not easy to pass;
-                                      2. Waterproof performance is poor;
-                                      3. Using more simple;
-                                      4. Inconvenient to use</div>
+                                      DRAWING IMAGES</div>
                                 </div>
                               
                               </div>
 
                               <div class="col-sm-12 col-md-6" >
-
-                            
                                             <!-- Tab panes 2 -->
                                             <div class="tab-content" id="tab-2">
                                               <div role="tabpanel" class="tab-pane active" id="tab-2-Bibliographic-data"> 
                                                 <ul style="margin-top: 30px; overflow-y: scroll; height: 1000px; float: left">  
                                                   <li>
-                                                    <label for="name" class="bold-label">1</label>
-                                                    <span>10202002094R</span>
+                                                    <label for="name" class="bold-label">Application Number</label>
+                                                    <span>10202002094A</span>
                                                   </li>
                                                   <li>
                                                     <label for="email" class="bold-label">Application Status</label>
@@ -608,7 +614,7 @@ $(document).ready(function() {
                                               
                                               
                                               <div role="tabpanel" class="tab-pane" id="tab-2-Description">
-                                                <ul style="margin-top: 30px; overflow-y: scroll; height: 1000px; float: left">TECHNICAL FIELD
+                                                <ul style="margin-top: 30px;">TECHNICAL FIELD
             
                                                 The Utility model relates snow boots technology, specifically a new inflatable snow boots. Background technique
                                                 Snow boots winter season as a practical footwear, popular in recent years. However, existing municipal court in snow deep snow boots when walking area, there will be a security risk. Therefore, the prior art still has the following problems:
@@ -619,21 +625,16 @@ $(document).ready(function() {
                                               </ul>
                                               </div>
                                               <div role="tabpanel" class="tab-pane" id="Claims">
-                                                <ul style="margin-top: 30px; overflow-y: scroll; height: 1000px; float: left">1. A New inflatable snow boots, characterised by: including inflatable mattress, inflatable cushion front-end structure of a circular arc, inflatable cushions backend triangular structure, inflatable bottom portion is provided with a wear-resistant reinforcing layer, intermediate inflatable mattress has snow boots place unit, placed on the surface of the snow boots with a plurality of concave portions, snow boots, snow boots placed in the unit in place, and with a bandage fixed.
+                                                <ul style="margin-top: 30px; ">1. A New inflatable snow boots, characterised by: including inflatable mattress, inflatable cushion front-end structure of a circular arc, inflatable cushions backend triangular structure, inflatable bottom portion is provided with a wear-resistant reinforcing layer, intermediate inflatable mattress has snow boots place unit, placed on the surface of the snow boots with a plurality of concave portions, snow boots, snow boots placed in the unit in place, and with a bandage fixed.
                                                 2. According to the new inflatable snow boots as claimed in claim 1, characterised in that: said inflatable cushions for snow boots twice the area of the sole.
                                                 3. According to the new inflatable snow boots according to claim 2, wherein;  the sole including the neel of the snow boots, the foot and front foot, with a plurality of circular projections block heel and the front food, arranged along
                                               </ul>
                                               </div>
                                               
                                                 <div role="tabpanel" class="tab-pane" id="Drawings"> 
-                                                  <ul style="margin-top: 30px; overflow-y: scroll; height: 1000px; float: left">TECHNICAL FIELD
+                                                  <ul style="margin-top: 30px; ">-
             
-                                                  The Utility model relates snow boots technology, specifically a new inflatable snow boots. Background technique
-                                                  Snow boots winter season as a practical footwear, popular in recent years. However, existing municipal court in snow deep snow boots when walking area, there will be a security risk. Therefore, the prior art still has the following problems:
-                                                  1. The snow is not easy to pass;
-                                                  2. Waterproof performance is poor;
-                                                  3. Using more simple;
-                                                  4. Inconvenient to use
+                                                  DRAWING IMAGES
                                                 </ul>
                                                 </div>
                                               </div>
@@ -850,6 +851,18 @@ $(document).ready(function(){
       } else {
         $('#filterBy').hide();
       }
+    }
+  });
+});
+$(document).ready(function() {
+  $('#text-only-button, #compact-list-button').click(function() {
+    var isTextOnly = $('#text-only-button').hasClass('active');
+    var isCompactList = $('#compact-list-button').hasClass('active');
+    
+    if (isTextOnly || isCompactList) {
+      $('#DT td[data-title="table-drawing"]').addClass('hidden');
+    } else {
+      $('#DT td[data-title="table-drawing"]').removeClass('hidden');
     }
   });
 });
