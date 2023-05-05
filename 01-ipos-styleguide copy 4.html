@@ -125,13 +125,16 @@
     margin-right: 0; /* Remove margin from the last button */
   }
   table tbody tr:hover,
-  table tbody tr.highlighted {
+table tbody tr.highlighted,
+table tbody tr:active {
   background-color: rgb(212, 212, 212);;
   cursor: pointer;
 }
-#container1 {
-  min-height: 1500px;
+tr {
+  height: 10px; /* set fixed height for table row */
+  overflow: hidden; /* hide overflow */
 }
+
 
      </style>
 <script>
@@ -140,11 +143,7 @@ $(document).ready(function() {
   $('#DT_filter').hide();
 });
 </script>
-<script>
-  $('#myTable').DataTable({
-  dom: '<"datatable-header"fl>t<"datatable-footer"ip>',
-});
-</script>
+
 <script>
     $(document).ready(function() {
         $('#example').DataTable({
@@ -252,83 +251,98 @@ $(document).ready(function() {
                                     
                                       <div class="form-group">
                                         
-                                        <div class="row" id="currentDate">
+                                        <div class="row">
                                           
                                           <div class="col-sm-4 dateGroup">
                                             <label for="ListView">List View</label>
                                             <select class="form-control selectpicker" id="ListView" name="ListView">
-                                              <option value="">Text Only</option>
-                                              <option value="1">Text and Thumbnails</option>
-                                              <option value="2">Compact List</option>
+                                              <option value="Listview-1">Text Only</option>
+                                              <option value="Listview-2">Text and Thumbnails</option>
+                                              <option value="Listview-3">Compact List</option>
+      
                                             </select>
                                           </div>
                                           <div class="col-sm-4 dateGroup">
                                             <div class="form-group">
-                                              <label for="multiselectSample">Filter By</label>
-                                             <select class="selectpicker" multiple data-live-search="true">
-                                              <optgroup label="">
-                                                <option disabled><strong>Filter By APPLICATION STATUS</strong></option>
-                                              </optgroup>
-                                              <option>Abandoned (Extension of Time possible)</option>
-                                              <option>Abandoned</option>
-                                              <option>Abandoned (Extension of Time Pending)</option>
-                                              <option>Expired</option>
-                                              <option>Lapsed</option>
-                                              <option>Lapsed (Late Renewal Possible)</option>
-                                              <option>Lapsed (Restoration Possible)</option>
-                                              <option>Lapsed (Restoration Pending)</option>
-                                              <option>Patent In Force</option>
-                                              <option>Pending (Not Published)</option>
-                                              <optgroup label="">
-                                                <option disabled><strong>Filter By IPC</strong></option>
-                                              </optgroup>
-                                              <option>8413 3/407</option>
-                                              <option>AA43B13/20</option>
-                                              <option>A092 1/12</option>
-                                              <option>CM01 /10</option>
-                                              <option>TT01/200</option>
-                                              <option>B413 3/407</option>
-                                              <option>A43B13/20</option>
-                                              <option>A092 1/12</option>
-                                              <option>CM01 /10</option>
-                                              <option>TT01/200</option>
-                                              <optgroup label="">
-                                                <option disabled><strong>Applicant/Inventor Name</strong></option>
-                                              </optgroup>
-                                              <option>1</option>
-                                              <option>2</option>
-                                              <option>3</option>
-                                              <option>4</option>
-                                              <option>5</option>
-                                              <option>6</option>
-                                              <option>7</option>
-                                              <option>8</option>
-                                              <option>9</option>
-                                              <option>10</option>
-                                            </select>
-                                            </div> 
+                                              <label for="filter-by">Filter By</label>
+                                              <select class="form-control selectpicker" id="filter-by" name="filter-by">
+                                                <option value="filterby1">IP Status</option>
+                                                <option value="filterby2">Publication Date</option>
+                                                <option value="filterby3">Filing Date</option>
+                                                <option value="filterby4">Priority Claim Date</option>
+                                                <option value="filterby5">Applicant Name</option>
+                                                <option value="filterby6">Inventor Name</option>
+                                              </select>
+                                            </div>
                                           </div>
 
                                           <div class="col-sm-4 dateGroup">
                                             <label for="SortBy">Sort By</label>
                                             <select class="form-control selectpicker" id="SortBy" name="sampleSortBy">
-                                              <option value="">Publication Date</option>
-                                              <option value="2016">2016</option>
-                                              <option value="2015">2015</option>
-                                              <option value="2014">2014</option>
-                                              <option value="2013">2013</option>
-                                              <option value="2012">2012</option>
+                                              <option value="1">Publication Date</option>
+                                              <option value="2">2016</option>
+                                              <option value="3">2015</option>
+                                              <option value="4">2014</option>
+                                              <option value="5">2013</option>
+                                              <option value="6">2012</option>
                                             </select>
                                           </div>
+                                      </div>
+
+                                      
+                                        <div class="row">
+                                      <div class="col-sm-4 dateGroup">
+                                        <div class="form-group" id="filterBy">
+                                          <label for="multiselectSample">&nbsp</label>
+                                          <select class="selectpicker" multiple data-live-search="true" onchange="filterByChange(this)">
+                                          <optgroup label="">
+                                            <option disabled><strong>Filter By APPLICATION STATUS</strong></option>
+                                          </optgroup>
+                                          <option>Abandoned (Extension of Time possible)</option>
+                                          <option>Abandoned</option>
+                                          <option>Abandoned (Extension of Time Pending)</option>
+                                          <option>Expired</option>
+                                          <option>Lapsed</option>
+                                          <option>Lapsed (Late Renewal Possible)</option>
+                                          <option>Lapsed (Restoration Possible)</option>
+                                          <option>Lapsed (Restoration Pending)</option>
+                                          <option>Patent In Force</option>
+                                          <option>Pending (Not Published)</option>
+                                          <optgroup label="">
+                                            <option disabled><strong>Filter By IPC</strong></option>
+                                          </optgroup>
+                                          <option>8413 3/407</option>
+                                          <option>AA43B13/20</option>
+                                          <option>A092 1/12</option>
+                                          <option>CM01 /10</option>
+                                          <option>TT01/200</option>
+                                          <option>B413 3/407</option>
+                                          <option>A43B13/20</option>
+                                          <option>A092 1/12</option>
+                                          <option>CM01 /10</option>
+                                          <option>TT01/200</option>
+                                          <optgroup label="">
+                                            <option disabled><strong>Applicant/Inventor Name</strong></option>
+                                          </optgroup>
+                                          <option>1</option>
+                                          <option>2</option>
+                                          <option>3</option>
+                                          <option>4</option>
+                                          <option>5</option>
+                                          <option>6</option>
+                                          <option>7</option>
+                                          <option>8</option>
+                                          <option>9</option>
+                                          <option>10</option>
+                                        </select>
+                                        </div> 
                                       </div>
                                         
                                     
                               
                                       </br>
-                                   
-
-                                
-                                  <!-- <button type="button" class="btn btn-primary" onclick="showjustify()">Provide Justification</button> -->
+                                    </br>
+                                                                        <!-- <button type="button" class="btn btn-primary" onclick="showjustify()">Provide Justification</button> -->
                               <!-- <button type="button" class="btn btn-primary" onclick="showremedy()">Propose Remedy</button> -->
                               <div class="text-left">
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modaljustify">Track Selected IPs</button>
@@ -344,10 +358,13 @@ $(document).ready(function() {
                                   $("#remedy").toggle();
                                 }
                               </script>
-                              
+                                    </br>
+                                  </br>
                                   <div class="col-sm-12 col-md-6"><div class="table-responsive" style="overflow-y: scroll; height: 1000px; float: left"> 
                                     
-                                    <table class="table border default-table" id="DT">                              
+                                    <table class="table border default-table" id="DT">
+                                
+
                               </br>
                             
                                       <thead>
@@ -356,6 +373,7 @@ $(document).ready(function() {
                                         <th width="62%"></th>
                                       </thead>
                                       <tbody>
+                                        
                                         <tr onclick="rowClicked(this,)" data-tab-id="tab-1" class="selected">
                                           <td data-title="Select">
                                             <div class="checkbox checkbox-info">
@@ -363,11 +381,11 @@ $(document).ready(function() {
                                               <label for="objbox1"></label>
                                             </div>
                                           </td>
-                                          <td data-title="Number">
+                                          <td data-title="table-drawing">
                                             <p>1.</p>
                                           </td>
                                           <td data-title="Objection">
-                                            <p><strong>Novel aerify snow boots</strong></p>
+                                            <p><strong>1. Novel aerify snow boots</strong></p>
                                             <p>10202002094R・DONYANG BUILDING</p>
                                             <p>Priority Claim Date: 2019-11-11・Journal Date: 2020-01-16</p>
                                             <p>The utility model discloses a novel aerify snow booys, including the inflatable packer, the inflatable packer front end is a circular wear structure, and the unflatable packer
@@ -382,29 +400,29 @@ $(document).ready(function() {
                                               <label for="objbox2"></label>
                                             </div>
                                           </td>
-                                          <td data-title="S/N">
+                                          <td data-title="table-drawing">
                                             <p>2.</p>
                                           </td>
                                           <td data-title="Objection">
-                                            <p><strong>SEPARATE BOOTS</strong></p>
+                                            <p><strong>2. SEPARATE BOOTS</strong></p>
                                             <p>10202002094R・KIM YONG JUN</p>
                                             <p>Priority Claim Date: 2019-11-11・Journal Date: 2020-01-16</p>
                                             <p>Leather boots are provided, which combine the bootys part and the shoes part when in use and separate the boots part and the shoes pa...
                                             </p>
                                           </td>
                                         </tr>
-                                        <tr>
+                                        <tr onclick="rowClicked(this)" data-tab-id="tab-2">
                                           <td data-title="Select">
                                             <div class="checkbox checkbox-info">
                                               <input type="checkbox" id="objbox3" value="">
                                               <label for="objbox3"></label>
                                             </div>
                                           </td>
-                                          <td data-title="S/N">
+                                          <td data-title="table-drawing">
                                             <p>3</p>
                                           </td>
                                           <td data-title="Objection">
-                                            <p><strong>Refrigerator</strong></p>
+                                            <p><strong>3. Refrigerator</strong></p>
                                             <p>10202002094R・STATE CORP CHINA</p>
                                             <p>Priority Claim Date: 2019-11-11・Journal Date: 2020-01-16</p>
                                             <p>The utility model discloses a novel aerify snow booys, including the inflatable packer, the inflatable packer front end is a circular wear structure, and the unflatable packer
@@ -517,16 +535,13 @@ $(document).ready(function() {
                                 </div>
                               
                               </div>
-                              </div>
-                            </div>
-                              
 
                               <div class="col-sm-12 col-md-6" >
 
                             
                                             <!-- Tab panes 2 -->
                                             <div class="tab-content" id="tab-2">
-                                              <div role="tabpanel" class="tab-pane active" id="Bibliographic-data"> 
+                                              <div role="tabpanel" class="tab-pane active" id="tab-2-Bibliographic-data"> 
                                                 <ul style="margin-top: 30px; overflow-y: scroll; height: 1000px; float: left">  
                                                   <li>
                                                     <label for="name" class="bold-label">1</label>
@@ -593,7 +608,7 @@ $(document).ready(function() {
                                               </div>
                                               
                                               
-                                              <div role="tabpanel" class="tab-pane" id="Description">
+                                              <div role="tabpanel" class="tab-pane" id="tab-2-Description">
                                                 <ul style="margin-top: 30px; overflow-y: scroll; height: 1000px; float: left">TECHNICAL FIELD
             
                                                 The Utility model relates snow boots technology, specifically a new inflatable snow boots. Background technique
@@ -611,7 +626,7 @@ $(document).ready(function() {
                                               </ul>
                                               </div>
                                               
-                                                <div role="tabpanelC" class="tab-pane" id="Drawings"> 
+                                                <div role="tabpanel" class="tab-pane" id="Drawings"> 
                                                   <ul style="margin-top: 30px; overflow-y: scroll; height: 1000px; float: left">TECHNICAL FIELD
             
                                                   The Utility model relates snow boots technology, specifically a new inflatable snow boots. Background technique
@@ -817,7 +832,7 @@ rows.forEach(function(row) {
   var tabContent = row.closest('.tab-pane').querySelectorAll('.tab-content .tab-pane');
   var targetTab = null;
   tabContent.forEach(function(content) {
-    if (content.id.indexOf(patentNumber) > -1 && content.id.startsWith('tab-')) {
+    if (content.id.indexOf(patentNumber) > -1 && content.id.startsWith('tab1-')) {
       targetTab = content;
       content.style.display = 'block';
     } else {
@@ -825,6 +840,21 @@ rows.forEach(function(row) {
     }
   });
 }
+</script>
+<script>
+$(document).ready(function(){
+  $('.selectpicker').on('changed.bs.select', function (e, clickedIndex, isSelected, previousValue) {
+    var selected = $(e.currentTarget).val();
+    if (e.currentTarget.id === 'filter-by') {
+      if (selected.includes('IP Status')) {
+        $('#filterBy').show();
+      } else {
+        $('#filterBy').hide();
+      }
+    }
+  });
+});
+
 </script>
   </body>
 </html>
