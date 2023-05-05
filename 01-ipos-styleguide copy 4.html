@@ -393,7 +393,7 @@ $(document).ready(function() {
                                               <label for="objbox1"></label>
                                             </div>
                                           </td>
-                                          <td data-title="table-drawing">
+                                          <td data-title="table-drawing" id="table-drawing">
                                             <p>(DRAWING IMAGE)</p>
                                           </td>
                                           <td data-title="Objection">
@@ -412,7 +412,7 @@ $(document).ready(function() {
                                               <label for="objbox2"></label>
                                             </div>
                                           </td>
-                                          <td data-title="table-drawing">
+                                          <td data-title="table-drawing" id="table-drawing">
                                             <p>(DRAWING IMAGE)</p>
                                           </td>
                                           <td data-title="Objection">
@@ -430,7 +430,7 @@ $(document).ready(function() {
                                               <label for="objbox3"></label>
                                             </div>
                                           </td>
-                                          <td data-title="table-drawing">
+                                          <td data-title="table-drawing" id="table-drawing">
                                             <p>(DRAWING IMAGE)</p>
                                           </td>
                                           <td data-title="Objection">
@@ -854,19 +854,25 @@ $(document).ready(function(){
     }
   });
 });
-$(document).ready(function() {
-  $('#text-only-button, #compact-list-button').click(function() {
-    var isTextOnly = $('#text-only-button').hasClass('active');
-    var isCompactList = $('#compact-list-button').hasClass('active');
-    
-    if (isTextOnly || isCompactList) {
-      $('#DT td[data-title="table-drawing"]').addClass('hidden');
-    } else {
-      $('#DT td[data-title="table-drawing"]').removeClass('hidden');
-    }
-  });
-});
 
+</script>
+<script>
+  function toggleDrawingColumn(view) {
+  var drawingColumn = document.getElementById("table-drawing");
+  if (view == "text-only" || view == "compact-list") {
+    drawingColumn.style.display = "none";
+  } else {
+    drawingColumn.style.display = "";
+  }
+}
+
+var viewButtons = document.querySelectorAll(".view-button");
+for (var i = 0; i < viewButtons.length; i++) {
+  viewButtons[i].addEventListener("click", function() {
+    var selectedView = this.getAttribute("data-view");
+    toggleDrawingColumn(selectedView);
+  });
+}
 </script>
   </body>
 </html>
