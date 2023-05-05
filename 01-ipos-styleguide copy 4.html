@@ -130,13 +130,12 @@ table tbody tr:active {
   background-color: rgb(212, 212, 212);;
   cursor: pointer;
 }
-tr {
-  height: 10px; /* set fixed height for table row */
-  overflow: hidden; /* hide overflow */
+table tbody tr {
+  height: 10px !important;
 }
 
-
      </style>
+
 <script>
 $(document).ready(function() {
   $('#DT').DataTable().search('').draw();
@@ -361,7 +360,7 @@ $(document).ready(function() {
                                     </br>
                                   </br>
                                   <div class="col-sm-12 col-md-6"><div class="table-responsive" style="overflow-y: scroll; height: 1000px; float: left"> 
-                                    
+                                    <table class="display fixed-height-table">
                                     <table class="table border default-table" id="DT">
                                 
 
@@ -638,7 +637,7 @@ $(document).ready(function() {
                                                 </ul>
                                                 </div>
                                               </div>
-                                          
+                                          </table>
                                         
                                           
                                           
