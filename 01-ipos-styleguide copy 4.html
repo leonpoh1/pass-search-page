@@ -547,7 +547,7 @@ $(document).ready(function() {
                                             <!-- Tab panes 2 -->
                                             <div class="tab-content" id="tab-2">
                                               <div role="tabpanel" class="tab-pane active" id="tab-2-Bibliographic-data"> 
-                                                <ul style="margin-top: 30px; overflow-y: scroll; height: 1000px; float: left">  
+                                                <ul style="margin-top: 30px;">  
                                                   <li>
                                                     <label for="name" class="bold-label">Application Number</label>
                                                     <span>10202002094A</span>
@@ -857,21 +857,23 @@ $(document).ready(function(){
 
 </script>
 <script>
-  function toggleDrawingColumn(view) {
-  var drawingColumn = document.getElementById("table-drawing");
-  if (view == "text-only" || view == "compact-list") {
-    drawingColumn.style.display = "none";
-  } else {
-    drawingColumn.style.display = "";
+function toggleThumbnails() {
+  var display = document.getElementById('display-mode').value;
+  if (display == 'thumbnails') {
+    $('.thumbnail').show();
+    $('td[data-title="table-drawing"]').hide();
+  } else if (display == 'text') {
+    $('.thumbnail').hide();
+    $('td[data-title!="table-drawing"]').show();
+    $('td[data-title="table-drawing"]').hide();
+  } else if (display == 'compact') {
+    $('.thumbnail').hide();
+    $('td[data-title!="table-drawing"]').show();
+    $('td[data-title="table-drawing"]').hide();
+  } else if (display == 'textandthumbnails') {
+    $('.thumbnail').show();
+    $('td[data-title!="table-drawing"]').show();
   }
-}
-
-var viewButtons = document.querySelectorAll(".view-button");
-for (var i = 0; i < viewButtons.length; i++) {
-  viewButtons[i].addEventListener("click", function() {
-    var selectedView = this.getAttribute("data-view");
-    toggleDrawingColumn(selectedView);
-  });
 }
 </script>
   </body>
