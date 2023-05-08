@@ -254,9 +254,9 @@ table.search-results {
                                         
                                         <div class="row">
                                           
-                                          <div class="col-sm-4 filterGroup" id="category-dropdown">
-                                            <label for="ListView">List View</label>
-                                            <select id="display-mode" onchange="toggleThumbnails()">
+                                          <div class="col-sm-4 filterGroup" id="category-dropdown" onclick="toggleDropdown('category-dropdown')">
+                                            <label for="ListView" onclick="toggleDropdown('category-dropdown')">List View</label>
+                                            <select id="display-mode" onchange="toggleThumbnails()" onclick="toggleDropdown('category-dropdown')">
                                               <option value="textthumbnails">Text and Thumbnails</option>
                                               <option value="text">Text Only</option>
                                               <option value="compact">Compact View</option>
@@ -876,8 +876,8 @@ $(document).ready(function() {
                    "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>"
         });
     });
-    function toggleDropdown() {
-  var dropdown = document.getElementById("category-dropdown");
+    function toggleDropdown(dropdownId) {
+  var dropdown = document.getElementById(dropdownId);
   if (dropdown.classList.contains("show")) {
     dropdown.classList.remove("show");
   } else {
