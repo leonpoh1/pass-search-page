@@ -878,11 +878,26 @@ $(document).ready(function() {
     });
     function toggleDropdown() {
   var dropdown = document.getElementById("category-dropdown");
-  if (dropdown.style.display === "none" || dropdown.style.display === "") {
-    dropdown.style.display = "block";
+  if (dropdown.classList.contains("show")) {
+    dropdown.classList.remove("show");
   } else {
-    dropdown.style.display = "none";
+    dropdown.classList.add("show");
   }
+}
+function toggleDropdown(id) {
+  var dropdown = document.getElementById(id);
+  dropdown.classList.toggle("show");
+}
+// Get the dropdown button element
+var listViewButton = document.getElementById("list-view-button");
+
+// Attach an event listener to the button
+listViewButton.addEventListener("click", function() {
+  toggleDropdown("category-dropdown-list-view");
+});
+function toggleDropdown(id) {
+  var dropdown = document.getElementById(id);
+  dropdown.classList.toggle("show");
 }
 </script>
   </body>
