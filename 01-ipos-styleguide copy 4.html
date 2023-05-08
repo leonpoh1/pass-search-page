@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <meta name="format-detection" content="telephone=no">
-    <title>IP4SG Style Guide</title>
+    
   
  
     <link rel="stylesheet" href="assets/css/bootstrap.css"> 
@@ -117,13 +117,6 @@
   overflow-x: hidden;
   overflow-y: auto;
 }
-table {
-  /* remove table-layout: fixed */
-  width: 100%;
-  border-collapse: collapse;
-  border-spacing: 0;
-  margin-bottom: 1rem;
-}
 .tab-pane {
   width: 100%;
   max-width: 800px; /* set a fixed width for the tab panel */
@@ -148,33 +141,18 @@ table tbody tr {
 .hidden {
   display: none;
 }
+table.search-results {
+  width: 100%;
+  table-layout: auto;
+}
+.filter .compact:checked ~ .table-content ~ .paragraph {
+  display: none;
+}
+      #DT th {
+        width: auto !important;
+      }
+    </style>
 
-     </style>
-
-<script>
-$(document).ready(function() {
-  $('#DT').DataTable().search('').draw();
-  $('#DT_filter').hide();
-});
-</script>
-<script>
-    // Remove the "Filter" option from the list of options when the dropdown menu is shown
-    $('.selectpicker').on('shown.bs.select', function () {
-    $(this).find('option[value="Filter"]').remove();
-  });
-</script>
-<script>
-    $(document).ready(function() {
-        $('#example').DataTable({
-            "language": {
-                "search": ""
-            },
-            "dom": "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
-                   "<'row'<'col-sm-12'tr>>" +
-                   "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>"
-        });
-    });
-</script>
      
   </head>
    <body class="p-0 m-auto">
@@ -235,7 +213,7 @@ $(document).ready(function() {
                 <div class="header-title-content"> 
                   <div class="row">
                     <div class="col-md-12">
-                    <h1>Search</h1> 
+                    <h1>Search and Enquiry</h1> 
                     </div>
                   </div>
                 </div>
@@ -265,14 +243,14 @@ $(document).ready(function() {
 
                                     
           
-                                      <h3 style="color: #36399b;">131 022 results found</h3>
+                                      <h3 style="color: #36399b;">3 results found</h3>
                                     </div>
                                     
                                       <div class="form-group">
                                         
                                         <div class="row">
                                           
-                                          <div class="col-sm-4 dateGroup">
+                                          <div class="col-sm-4 filterGroup">
                                             <label for="ListView">List View</label>
                                             <select id="display-mode" onchange="toggleThumbnails()">
                                               <option value="textthumbnails">Text and Thumbnails</option>
@@ -280,7 +258,7 @@ $(document).ready(function() {
                                               <option value="compact">Compact View</option>
                                             </select>
                                           </div>
-                                          <div class="col-sm-4 dateGroup">
+                                          <div class="col-sm-4 filterGroup">
                                             <div class="form-group">
                                               <label for="filter-by">Filter By</label>
                                               <select class="form-control selectpicker" id="filter-by" name="filter-by">
@@ -309,7 +287,7 @@ $(document).ready(function() {
 
                                       
                                         <div class="row">
-                                      <div class="col-sm-4 dateGroup">
+                                      <div class="col-sm-4 filterGroup">
                                         <div class="form-group" id="filterBy">
                                           <label for="multiselectSample">Filter</label>
                                           <select class="selectpicker" multiple data-live-search="true" onchange="filterByChange(this)" placeholder="Filter">
@@ -360,35 +338,36 @@ $(document).ready(function() {
                               
                                       </br>
                                     </br>
-                                                                        <!-- <button type="button" class="btn btn-primary" onclick="showjustify()">Provide Justification</button> -->
-                              <!-- <button type="button" class="btn btn-primary" onclick="showremedy()">Propose Remedy</button> -->
+                                                                        <!-- Buttons -->
                               <div class="text-left">
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modaljustify">Track Selected IPs</button>
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalremedy">Export</button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#trackselectedIPs">Track Selected IPs</button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#export">Export</button>
                               </div>
                               
                               <script>
                                 function showjustify() {
-                                  $("#justify").toggle();
+                                  $("#trackselectedips").toggle();
                                 }
                               
                                 function showremedy() {
-                                  $("#remedy").toggle();
+                                  $("#export").toggle();
                                 }
                               </script>
                                     </br>
                                   </br>
                                   <div class="col-sm-12 col-md-6"><div class="table-responsive" style="overflow-y: scroll; height: 1000px; float: left"> 
-                                    <table class="display fixed-height-table">
+                                    
                                     <table class="table border default-table" id="DT">
                                 
 
                               </br>
                             
                                       <thead>
+                                        <tr>
                                         <th width="8%"></th>
                                         <th width="8%"></th>
-                                        <th width="62%"></th>
+                                        <th width="84%"></th>
+                                      </tr>
                                       </thead>
                                       <tbody>
                                         
@@ -400,15 +379,18 @@ $(document).ready(function() {
                                             </div>
                                           </td>
                                           <td data-title="table-drawing" id="table-drawing">
+                                            
                                             <p>(DRAWING IMAGE)</p>
                                           </td>
                                           <td data-title="Objection">
                                             <p><strong>1. Novel aerify snow boots</strong></p>
                                             <p>10202002094R・DONYANG BUILDING</p>
                                             <p>Priority Claim Date: 2019-11-11・Journal Date: 2020-01-16</p>
+                                            <div class="paragraph">
                                             <p>The utility model discloses a novel aerify snow booys, including the inflatable packer, the inflatable packer front end is a circular wear structure, and the unflatable packer
                                               rear end is the triangle-shaped structure
                                             </p>
+                                          </div>
                                           </td>
                                         </tr>
                                         <tr onclick="rowClicked(this)" data-tab-id="tab-2">
@@ -425,8 +407,10 @@ $(document).ready(function() {
                                             <p><strong>2. SEPARATE BOOTS</strong></p>
                                             <p>10202002094A・KIM YONG JUN</p>
                                             <p>Priority Claim Date: 2019-11-11・Journal Date: 2020-01-16</p>
+                                            <div class="paragraph">
                                             <p>Leather boots are provided, which combine the bootys part and the shoes part when in use and separate the boots part and the shoes pa...
                                             </p>
+                                          </div>
                                           </td>
                                         </tr>
                                         <tr onclick="rowClicked(this)" data-tab-id="tab-2">
@@ -442,10 +426,12 @@ $(document).ready(function() {
                                           <td data-title="Objection">
                                             <p><strong>3. Refrigerator</strong></p>
                                             <p>10202002094R・STATE CORP CHINA</p>
+                                            <div class="paragraph">
                                             <p>Priority Claim Date: 2019-11-11・Journal Date: 2020-01-16</p>
                                             <p>The utility model discloses a novel aerify snow booys, including the inflatable packer, the inflatable packer front end is a circular wear structure, and the unflatable packer
                                               rear end is the triangle-shaped structure
                                             </p>
+                                          </div>
                                         </tr>
                                       </tbody>
                                     </table>
@@ -644,23 +630,21 @@ $(document).ready(function() {
                                                 </ul>
                                                 </div>
                                               </div>
-                                          </table>
-                                        
+                                          </table> 
+                                        </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div> 
+                      </div>
+                  </div> 
+              </div>
+            </div>
+          </div> 
                                           
                                           
                                           <!-- End Objections Table -->
-                                       
-                                            
-                                                </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div> 
-                                    </div>
-                                </div> 
-                            </div>
-                          </div>
-                        </div> 
+                                    
  
     <!-- Footer-->
     <div class="footer hidden-print">
@@ -743,17 +727,10 @@ $(document).ready(function() {
     maxView: 1,
     forceParse: 0
     });
-</script> 
-<script>
      $(document).ready(function () {
       $("#DT").DataTable();
     });  
-   
-  </script>
-  <script>
       $('select').selectpicker();
-  </script>
- <script>
 function rowClicked(row) {
   // Remove highlighting from previously selected row
   var prevSelectedRow = document.querySelector('.selected');
@@ -770,13 +747,9 @@ function rowClicked(row) {
   });
   tabContent.style.display = 'block';
 }
-</script>
-<script>
   window.addEventListener("DOMContentLoaded", function() {
     document.getElementById("DT").rows[1].click();
   });
-</script>
-<script>
 function displayTabContent(row) {
   // Remove highlighting from previously selected row
   var prevSelectedRow = document.querySelector('.selected');
@@ -810,8 +783,6 @@ rows.forEach(function(row) {
     displayTabContent(this);
   };
 });
-</script>
-<script>
   // Add onclick event listener to each row in the table
 var rows = table.querySelectorAll('tbody tr');
 rows.forEach(function(row) {
@@ -819,8 +790,6 @@ rows.forEach(function(row) {
     displayTabContent(this);
   };
 });
-</script>
-<script>
   function displayTabContent(row) {
   // Remove highlighting from previously selected row
   var prevSelectedRow = document.querySelector('.selected');
@@ -846,8 +815,6 @@ rows.forEach(function(row) {
     }
   });
 }
-</script>
-<script>
 $(document).ready(function(){
   $('.selectpicker').on('changed.bs.select', function (e, clickedIndex, isSelected, previousValue) {
     var selected = $(e.currentTarget).val();
@@ -860,9 +827,6 @@ $(document).ready(function(){
     }
   });
 });
-
-</script>
-<script>
 function toggleThumbnails() {
   var display = document.getElementById('display-mode').value;
   if (display == 'thumbnails') {
@@ -872,14 +836,17 @@ function toggleThumbnails() {
     $('.thumbnail').hide();
     $('td[data-title!="table-drawing"]').show();
     $('td[data-title="table-drawing"]').hide();
+    $('.paragraph').show(); // show the paragraph
   } else if (display == 'compact') {
     $('.thumbnail').hide();
     $('td[data-title!="table-drawing"]').show();
     $('td[data-title="table-drawing"]').hide();
+    $('.paragraph').hide(); // hide the paragraph
   } else if (display == 'textthumbnails') {
     $('.thumbnail').show();
     $('td[data-title!="table-drawing"]').show();
     $('td[data-title="table-drawing"]').show();
+    $('.paragraph').show(); // show the paragraph
   }
 
   // Hide the "Drawing Images" column if the selected display mode is not "Text and Thumbnails"
@@ -887,6 +854,36 @@ function toggleThumbnails() {
     $('td[data-title="table-drawing"]').hide();
   }
 }
+$(document).ready(function() {
+  $('#DT').DataTable().search('').draw();
+  $('#DT_filter').hide();
+});
+    // Remove the "Filter" option from the list of options when the dropdown menu is shown
+    $('.selectpicker').on('shown.bs.select', function () {
+    $(this).find('option[value="Filter"]').remove();
+  });
+    $(document).ready(function() {
+        $('#example').DataTable({
+            "language": {
+                "search": ""
+            },
+            "dom": "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
+                   "<'row'<'col-sm-12'tr>>" +
+                   "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>"
+        });
+    });
+    // Get the dropdown menu element
+var dropdown = document.getElementById("dropdown-menu");
+
+// Attach an event listener to the dropdown menu element
+dropdown.addEventListener("click", function() {
+  // Toggle the visibility of the dropdown menu
+  if (dropdown.classList.contains("open")) {
+    dropdown.classList.remove("open");
+  } else {
+    dropdown.classList.add("open");
+  }
+});
 </script>
   </body>
 </html>
