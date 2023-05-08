@@ -891,14 +891,13 @@ function toggleDropdown(id) {
 // Get the dropdown button element
 var listViewButton = document.getElementById("list-view-button");
 
+// Get the dropdown container element
+var listViewDropdown = document.getElementById("category-dropdown-list-view");
+
 // Attach an event listener to the button
 listViewButton.addEventListener("click", function() {
-  toggleDropdown("category-dropdown-list-view");
+  listViewDropdown.classList.toggle("show");
 });
-function toggleDropdown(id) {
-  var dropdown = document.getElementById(id);
-  dropdown.classList.toggle("show");
-}
 </script>
   </body>
 </html>
