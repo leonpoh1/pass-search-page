@@ -151,8 +151,9 @@ table.search-results {
       #DT th {
         width: auto !important;
       }
-      .dropdown-content.active {
-  display: block;
+      .dropdown-content:not(.active),
+.dropdown-content.active {
+  display: none;
 }
     </style>
 
@@ -255,7 +256,7 @@ table.search-results {
                                           
                                           <div class="col-sm-4 filterGroup">
                                             <label for="ListView">List View</label>
-                                            <select id="data-dropdown-menu-1" onchange="toggleThumbnails()">
+                                            <select id="display-mode" onchange="toggleThumbnails()">
                                               <option value="textthumbnails">Text and Thumbnails</option>
                                               <option value="text">Text Only</option>
                                               <option value="compact">Compact View</option>
@@ -264,7 +265,7 @@ table.search-results {
                                           <div class="col-sm-4 filterGroup">
                                             <div class="form-group">
                                               <label for="filter-by">Filter By</label>
-                                              <select class="form-control selectpicker" id="data-dropdown-menu-2" name="filter-by">
+                                              <select class="form-control selectpicker" id="filter-by" name="filter-by">
                                                 <option value="filterby1">IP Status</option>
                                                 <option value="filterby2">Publication Date</option>
                                                 <option value="filterby3">Filing Date</option>
@@ -275,9 +276,9 @@ table.search-results {
                                             </div>
                                           </div>
 
-                                          <div class="col-sm-4 filterGroup">
+                                          <div class="col-sm-4 dateGroup">
                                             <label for="SortBy">Sort By</label>
-                                            <select class="form-control selectpicker" id="data-dropdown-menu-3" name="sampleSortBy">
+                                            <select class="form-control selectpicker" id="SortBy" name="sampleSortBy">
                                               <option value="1">Publication Date</option>
                                               <option value="2">2016</option>
                                               <option value="3">2015</option>
@@ -875,24 +876,17 @@ $(document).ready(function() {
                    "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>"
         });
     });
-// Get all the dropdown buttons
-var dropdownBtns = document.querySelectorAll('.dropdown-btn');
+// Get the dropdown button element
+var dropdownBtn = document.getElementById("dropdown-btn");
 
-// Loop through each dropdown button
-dropdownBtns.forEach(function(btn) {
-  // Get the ID of the corresponding dropdown menu
-  var dropdownMenuId = btn.dataset.dropdownMenu;
+// Get the dropdown menu element
+var dropdownMenu = document.getElementById("dropdown-menu");
 
-  // Get the dropdown menu element
-  var dropdownMenu = document.getElementById(dropdownMenuId);
-
-  // Attach a "click" event listener to the dropdown button element
-  btn.addEventListener("click", function() {
-    // Toggle the "active" class on the dropdown menu element
-    dropdownMenu.classList.toggle("active");
-  });
+// Attach a "click" event listener to the dropdown button element
+dropdownBtn.addEventListener("click", function() {
+  // Toggle the "active" class on the dropdown menu element
+  dropdownMenu.classList.toggle("active");
 });
-
 </script>
   </body>
 </html>
