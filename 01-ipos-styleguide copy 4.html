@@ -876,17 +876,14 @@ $(document).ready(function() {
                    "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>"
         });
     });
-// Get the dropdown button element
-var dropdownBtn = document.getElementById("dropdown-btn");
-
-// Get the dropdown menu element
-var dropdownMenu = document.getElementById("dropdown-menu");
-
-// Attach a "click" event listener to the dropdown button element
-dropdownBtn.addEventListener("click", function() {
-  // Toggle the "active" class on the dropdown menu element
-  dropdownMenu.classList.toggle("active");
-});
+    function toggleDropdown() {
+  var dropdown = document.getElementById("category-dropdown");
+  if (dropdown.style.display === "none" || dropdown.style.display === "") {
+    dropdown.style.display = "block";
+  } else {
+    dropdown.style.display = "none";
+  }
+}
 </script>
   </body>
 </html>
