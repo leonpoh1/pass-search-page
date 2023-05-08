@@ -872,18 +872,26 @@ $(document).ready(function() {
                    "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>"
         });
     });
-    // Get the dropdown menu element
-var dropdown = document.getElementById("dropdown-menu");
-
-// Attach an event listener to the dropdown menu element
-dropdown.addEventListener("click", function() {
-  // Toggle the visibility of the dropdown menu
-  if (dropdown.classList.contains("open")) {
-    dropdown.classList.remove("open");
-  } else {
-    dropdown.classList.add("open");
+// When the user clicks anywhere outside of the dropdown menu,
+// close it
+window.onclick = function(event) {
+  if (!event.target.matches('#dropdown-btn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('active')) {
+        openDropdown.classList.remove('active');
+      }
+    }
   }
-});
+}
+
+// Toggle the dropdown menu
+function toggleDropdown() {
+  document.getElementById("dropdown-menu").classList.toggle("active");
+}
+
 </script>
   </body>
 </html>
