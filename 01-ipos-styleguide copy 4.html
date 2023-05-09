@@ -22,8 +22,14 @@
     <link rel="stylesheet" href="assets/css/bootstrap-select.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.1/css/bootstrap.min.css" integrity="sha512-jWb7GmXgQJQGJUbFJskfO/1+fuSTT88yliDYYikN8WJhtXeNldgEe+Gt98JlBwKjvFyNPg2zPXX+H8tjoClXbQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <link rel="stylesheet" href="./IP4SG - An eServices Portal by IPOS_files/bootstrap-select.min.css">
+    <link rel="stylesheet" href="./IP4SG - An eServices Portal by IPOS_files/style.css"> 
+    <link rel="stylesheet" href="./IP4SG - An eServices Portal by IPOS_files/bootstrap.min.css">
     
-    
+    <script src="./IP4SG - An eServices Portal by IPOS_files/bootstrap.min.js.下载"></script>
+
+<script src="./IP4SG - An eServices Portal by IPOS_files/jquery.min.js.下载"></script>
+
     
     <style>
       ul {
@@ -161,6 +167,9 @@ table.search-results {
 .dropdown-content.active {
   display: none;
 }
+#tab-2 {
+  display: none;
+}
     </style>
 
      
@@ -288,82 +297,74 @@ table.search-results {
                                                   <select class="form-control" id="assignTo2" name="assignTo2">
                                                       <option value="">Journal Date</option>
                                                       <option>Priority Claim Date</option>
-
                                                   </select>
-                                                </div>
-                                              </div>
-                                            </div>
-                                   
-                                
+                                               </div>
+                                               </div>
                                           
-                                      
-                            
-                                     
-                                        <div class="row">
-                                      <div class="col-sm-4 filterGroup">
-                                        <div class="filterGroup" id="filterBy">
-                                          <label for="multiselectSample">Filter</label>
-                                          <select class="selectpicker" multiple data-live-search="true">
-                                            <optgroup label="">
-                                            <option disabled><strong>Filter By APPLICATION STATUS</strong></option>
-                                          </optgroup>
-                                          <option>Abandoned (Extension of Time possible)</option>
-                                          <option>Abandoned</option>
-                                          <option>Abandoned (Extension of Time Pending)</option>
-                                          <option>Expired</option>
-                                          <option>Lapsed</option>
-                                          <option>Lapsed (Late Renewal Possible)</option>
-                                          <option>Lapsed (Restoration Possible)</option>
-                                          <option>Lapsed (Restoration Pending)</option>
-                                          <option>Patent In Force</option>
-                                          <option>Pending (Not Published)</option>
-                                          <optgroup label="">
-                                            <option disabled><strong>Filter By IPC</strong></option>
-                                          </optgroup>
-                                          <option>8413 3/407</option>
-                                          <option>AA43B13/20</option>
-                                          <option>A092 1/12</option>
-                                          <option>CM01 /10</option>
-                                          <option>TT01/200</option>
-                                          <option>B413 3/407</option>
-                                          <option>A43B13/20</option>
-                                          <option>A092 1/12</option>
-                                          <option>CM01 /10</option>
-                                          <option>TT01/200</option>
-                                          <optgroup label="">
-                                            <option disabled><strong>Applicant/Inventor Name</strong></option>
-                                          </optgroup>
-                                          <option>1</option>
-                                          <option>2</option>
-                                          <option>3</option>
-                                          <option>4</option>
-                                          <option>5</option>
-                                          <option>6</option>
-                                          <option>7</option>
-                                          <option>8</option>
-                                          <option>9</option>
-                                          <option>10</option>
-                                        </select>
-                                        </div> 
-                                      </div>
-                                        
-
-                                    
-                              
-                                      </br>
+                                                  
+                                                    <div class="col-sm-4">
+                                                      <div class="filterGroup" id="filterBy">
+                                                        <label for="multiselectSample">Filter</label>
+                                                        <select class="selectpicker" multiple data-live-search="true">
+                                                          <optgroup label="">
+                                                          <option disabled><strong>Filter By APPLICATION STATUS</strong></option>
+                                                        </optgroup>
+                                                        <option>Abandoned (Extension of Time possible)</option>
+                                                        <option>Abandoned</option>
+                                                        <option>Abandoned (Extension of Time Pending)</option>
+                                                        <option>Expired</option>
+                                                        <option>Lapsed</option>
+                                                        <option>Lapsed (Late Renewal Possible)</option>
+                                                        <option>Lapsed (Restoration Possible)</option>
+                                                        <option>Lapsed (Restoration Pending)</option>
+                                                        <option>Patent In Force</option>
+                                                        <option>Pending (Not Published)</option>
+                                                        <optgroup label="">
+                                                          <option disabled><strong>Filter By IPC</strong></option>
+                                                        </optgroup>
+                                                        <option>8413 3/407</option>
+                                                        <option>AA43B13/20</option>
+                                                        <option>A092 1/12</option>
+                                                        <option>CM01 /10</option>
+                                                        <option>TT01/200</option>
+                                                        <option>B413 3/407</option>
+                                                        <option>A43B13/20</option>
+                                                        <option>A092 1/12</option>
+                                                        <option>CM01 /10</option>
+                                                        <option>TT01/200</option>
+                                                        <optgroup label="">
+                                                          <option disabled><strong>Applicant/Inventor Name</strong></option>
+                                                        </optgroup>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                        <option>6</option>
+                                                        <option>7</option>
+                                                        <option>8</option>
+                                                        <option>9</option>
+                                                        <option>10</option>
+                                                      </select>
+                                                      </div> 
+                                                    </div> 
+                                                   
+                                                  
+                                                
+              
                                     </br>
                                                                         <!-- Buttons -->
                               <div class="text-left">
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#trackselectedIPs">Track Selected IPs</button>
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#export">Export</button>
                               </div>
-                              
+                            </div>
                               <script>
-                                function showjustify() {
+                                function showtrackselectedips() {
                                   $("#trackselectedips").toggle();
                                 }
                               
-                                function showremedy() {
+                                function showexopor() {
                                   $("#export").toggle();
                                 }
                               </script>
@@ -683,7 +684,7 @@ table.search-results {
     </div>
     <!-- Footer-->
     
-    <script src="assets/js/jquery.min.js"></script> 
+
     <script src="assets/js/bootstrap.min.js"></script>   
     <script src="assets/jquery-ui.min.js"></script>
     <script src="assets/js/components.js"></script>
@@ -905,7 +906,9 @@ var listViewDropdown = document.getElementById("category-dropdown-list-view");
 listViewButton.addEventListener("click", function() {
   listViewDropdown.classList.toggle("show");
 });
-$('select').selectpicker();
+$('#show-tab-2').on('click', function() {
+  $('#tab-2').show();
+});
 </script>
   </body>
 </html>
