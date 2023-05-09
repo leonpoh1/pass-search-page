@@ -22,6 +22,9 @@
     <link rel="stylesheet" href="assets/css/bootstrap-select.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.1/css/bootstrap.min.css" integrity="sha512-jWb7GmXgQJQGJUbFJskfO/1+fuSTT88yliDYYikN8WJhtXeNldgEe+Gt98JlBwKjvFyNPg2zPXX+H8tjoClXbQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    
+    
+    
     <style>
       ul {
          list-style: none outside none;
@@ -35,7 +38,10 @@
       } 
       .form-control {
        height: 2.8rem;
-       }
+    margin-top: 5px;
+    padding: 0.375rem 0.75rem;
+}
+       
       .search-selection {
        background: #fafafa;
        border-radius: 8px;
@@ -250,51 +256,54 @@ table.search-results {
                                       <h3 style="color: #36399b;">3 results found</h3>
                                     </div>
                                     
-                                      <div class="form-group">
-                                        
-                                        <div class="row">
-                                          
-                                          <div class="col-sm-4 filterGroup" id="category-dropdown" onclick="toggleDropdown('category-dropdown')">
-                                            <label for="ListView" onclick="toggleDropdown('category-dropdown')">List View</label>
-                                            <select id="display-mode" onchange="toggleThumbnails()" onclick="toggleDropdown('category-dropdown')">
-                                              <option value="textthumbnails">Text and Thumbnails</option>
-                                              <option value="text">Text Only</option>
-                                              <option value="compact">Compact View</option>
-                                            </select>
+                                    <div class="form-group">
+                                      <div class="row">
+                                          <div class="col-sm-4">
+                                              <div class="filterGroup">
+                                                <label for="inputField">List View </label>
+                                                  <select class="form-control" id="display-mode" onchange="toggleThumbnails()">
+                                                      <option value="textthumbnails">Text and Thumbnails</option>
+                                                      <option value="text">Text Only</option>
+                                                      <option value="compact">Compact View</option>
+                                                  </select>
+                                              </div>
                                           </div>
-                                          <div class="col-sm-4 filterGroup" id="category-dropdown">
-                                            <div class="form-group">
-                                              <label for="filter-by">Filter By</label>
-                                              <select class="form-control selectpicker" id="filter-by" name="filter-by">
-                                                <option value="filterby1">IP Status</option>
-                                                <option value="filterby2">Publication Date</option>
-                                                <option value="filterby3">Filing Date</option>
-                                                <option value="filterby4">Priority Claim Date</option>
-                                                <option value="filterby5">Applicant Name</option>
-                                                <option value="filterby6">Inventor Name</option>
-                                              </select>
+                                          <div class="col-sm-4">
+                                              <div class="filterGroup">
+                                                  <label>Filter by</label>
+                                                  <select class="form-control" id="assignTo1" name="assignTo1">
+                                                      <option value="">IP Status</option>
+                                                      <option>Publication Date</option>
+                                                      <option>Filing Date</option>
+                                                      <option>Priority Claim Date</option>
+                                                      <option>Applicant Name</option>
+                                                      <option>Inventor Name</option>
+                                                      <option>IPC</option>
+                                                  </select>
+                                              </div>
+                                          </div>
+                                          <div class="col-sm-4">
+                                              <div class="filterGroup">
+                                                  <label>Sort By</label>
+                                                  <select class="form-control" id="assignTo2" name="assignTo2">
+                                                      <option value="">Journal Date</option>
+                                                      <option>Priority Claim Date</option>
+
+                                                  </select>
+                                                </div>
+                                              </div>
                                             </div>
-                                          </div>
-
-                                          <div class="col-sm-4 filterGroup" id="category-dropdown">
-                                            <label for="SortBy">Sort By</label>
-                                            <select class="form-control selectpicker" id="SortBy" name="sampleSortBy">
-                                              <option value="1">Publication Date</option>
-                                              <option value="2">2016</option>
-                                              <option value="3">2015</option>
-                                              <option value="4">2014</option>
-                                              <option value="5">2013</option>
-                                              <option value="6">2012</option>
-                                            </select>
-                                          </div>
-                                      </div>
-
+                                   
+                                
+                                          
                                       
+                            
+                                     
                                         <div class="row">
                                       <div class="col-sm-4 filterGroup">
-                                        <div class="form-group" id="filterBy">
+                                        <div class="filterGroup" id="filterBy">
                                           <label for="multiselectSample">Filter</label>
-                                          <select class="selectpicker" multiple data-live-search="true" onchange="filterByChange(this)" placeholder="Filter">
+                                          <select class="selectpicker" multiple data-live-search="true">
                                             <optgroup label="">
                                             <option disabled><strong>Filter By APPLICATION STATUS</strong></option>
                                           </optgroup>
@@ -338,6 +347,7 @@ table.search-results {
                                         </div> 
                                       </div>
                                         
+
                                     
                               
                                       </br>
@@ -364,287 +374,287 @@ table.search-results {
                                     <table class="table border default-table" id="DT">
                                 
 
-                              </br>
+                                    </br>
                             
-                                      <thead>
-                                        <tr>
-                                        <th width="8%"></th>
-                                        <th width="8%"></th>
-                                        <th width="84%"></th>
-                                      </tr>
-                                      </thead>
-                                      <tbody>
-                                        
-                                        <tr onclick="rowClicked(this,)" data-tab-id="tab-1" class="selected">
-                                          <td data-title="Select">
-                                            <div class="checkbox checkbox-info">
-                                              <input type="checkbox" id="objbox1" value="">
-                                              <label for="objbox1"></label>
-                                            </div>
-                                          </td>
-                                          <td data-title="table-drawing" id="table-drawing">
-                                            
-                                            <p>(DRAWING IMAGE)</p>
-                                          </td>
-                                          <td data-title="Objection">
-                                            <p><strong>1. Novel aerify snow boots</strong></p>
-                                            <p>10202002094R・DONYANG BUILDING</p>
-                                            <p>Priority Claim Date: 2019-11-11・Journal Date: 2020-01-16</p>
-                                            <div class="paragraph">
-                                            <p>The utility model discloses a novel aerify snow booys, including the inflatable packer, the inflatable packer front end is a circular wear structure, and the unflatable packer
-                                              rear end is the triangle-shaped structure
-                                            </p>
+                                    <thead>
+                                      <tr>
+                                      <th width="8%"></th>
+                                      <th width="8%"></th>
+                                      <th width="84%"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                      
+                                      <tr onclick="rowClicked(this,)" data-tab-id="tab-1" class="selected">
+                                        <td data-title="Select">
+                                          <div class="checkbox checkbox-info">
+                                            <input type="checkbox" id="objbox1" value="">
+                                            <label for="objbox1"></label>
                                           </div>
-                                          </td>
-                                        </tr>
-                                        <tr onclick="rowClicked(this)" data-tab-id="tab-2">
-                                          <td data-title="Select">
-                                            <div class="checkbox checkbox-info">
-                                              <input type="checkbox" id="objbox2" value="">
-                                              <label for="objbox2"></label>
-                                            </div>
-                                          </td>
-                                          <td data-title="table-drawing" id="table-drawing">
-                                            <p>(DRAWING IMAGE)</p>
-                                          </td>
-                                          <td data-title="Objection">
-                                            <p><strong>2. SEPARATE BOOTS</strong></p>
-                                            <p>10202002094A・KIM YONG JUN</p>
-                                            <p>Priority Claim Date: 2019-11-11・Journal Date: 2020-01-16</p>
-                                            <div class="paragraph">
-                                            <p>Leather boots are provided, which combine the bootys part and the shoes part when in use and separate the boots part and the shoes pa...
-                                            </p>
-                                          </div>
-                                          </td>
-                                        </tr>
-                                        <tr onclick="rowClicked(this)" data-tab-id="tab-2">
-                                          <td data-title="Select">
-                                            <div class="checkbox checkbox-info">
-                                              <input type="checkbox" id="objbox3" value="">
-                                              <label for="objbox3"></label>
-                                            </div>
-                                          </td>
-                                          <td data-title="table-drawing" id="table-drawing">
-                                            <p>(DRAWING IMAGE)</p>
-                                          </td>
-                                          <td data-title="Objection">
-                                            <p><strong>3. Refrigerator</strong></p>
-                                            <p>10202002094R・STATE CORP CHINA</p>
-                                            <div class="paragraph">
-                                            <p>Priority Claim Date: 2019-11-11・Journal Date: 2020-01-16</p>
-                                            <p>The utility model discloses a novel aerify snow booys, including the inflatable packer, the inflatable packer front end is a circular wear structure, and the unflatable packer
-                                              rear end is the triangle-shaped structure
-                                            </p>
-                                          </div>
-                                        </tr>
-                                      </tbody>
-                                    </table>
-                                  </div>
-                                </div>
-                              <div>
-                                <!-- Nav tabs -->
-                                <div class="col-sm-12 col-md-6" ><ul class="nav nav-tabs" role="tablist">
-                                  <li role="presentation" class="active"><a href="#Bibliographic-data" aria-controls="home" role="tab" data-toggle="tab">Bibliographic data</a></li>
-                                  <li role="presentation"><a href="#Description" aria-controls="profile" role="tab" data-toggle="tab">Description</a></li>
-                                  <li role="presentation"><a href="#Claims" aria-controls="messages" role="tab" data-toggle="tab">Claims</a></li>
-                                  <li role="presentation"><a href="#Drawings" aria-controls="settings" role="tab" data-toggle="tab">Drawings</a></li>
-                                </ul>
-                              
-                                <!-- Tab panes -->
-                                <div class="tab-content" id="tab-1">
-                                  <div role="tabpanel" class="tab-pane active" id="Bibliographic-data"> 
-                                    <ul style="margin-top: 30px;">  
-                                      <li>
-                                        <label for="name" class="bold-label">Application Number</label>
-                                        <span>10202002094R</span>
-                                      </li>
-                                      <li>
-                                        <label for="email" class="bold-label">Application Status</label>
-                                        <span>Pending (Published)</span>
-                                      </li>
-                                      <li>
-                                        <label for="message" class="bold-label">Filing Date</label>
-                                        <span>2018-1-16</span>
-                                      </li>
-                                      <li>
-                                        <label for="message" class="bold-label">Lodgement Date</label>
-                                        <span>2020-01-16</span>
-                                      </li>
-                                      <li>
-                                        <label for="message" class="bold-label">Declaration of Priority</label>
-                                        <span>10202002094R . 2019-11-11 . China</span>
-                                      </li>
-                                      <li>
-                                        <label for="message" class="bold-label">Title of Invention</label>
-                                        <span>Boots Design</span>
-                                      </li>
-                                      <li>
-                                        <label for="message" class="bold-label">Applicant Name</label>
-                                        <span>DONYANG BUILDING</span>
-                                      </li>
-                                      <li>
-                                        <label for="message" class="bold-label">Sole Proprietor or Partner's Name</label>
-                                        <span>David Tan</span>
-                                      </li>
-                                      <li>
-                                        <label for="message" class="bold-label">Agent UEN/Company Code</label>
-                                        <span>C10001212Z</span>
-                                      </li>
-                                      <li>
-                                        <label for="message" class="bold-label">Agent Name</label>
-                                        <span>BAO HUIZHONG</span>
-                                      </li>
-                                      <li>
-                                        <label for="message" class="bold-label">Action Representing</label>
-                                        <span>-</span>
-                                      </li>
-                                      <li>
-                                        <label for="message" class="bold-label">Representative or C/O Name</label>
-                                        <span>BAO HUIZHONG; WU JIANGPING</span>
-                                      </li>
-                                      <li>
-                                        <label for="message" class="bold-label">Inventor(s)</label>
-                                        <span>David Tan</span>
-                                      </li>
-                                      <li>
-                                        <label for="message" class="bold-label">International Patent Classification</label>
-                                        <span>A43B13/20;</span>
-                                      </li>
-                                      <li>
-                                        <label for="message" class="bold-label">Drawings</label>
-                                        <span>-</span>
-                                      </li>
-
-                                    </ul>
-                                  </div>
-                                  
-                                  <div role="tabpanel" class="tab-pane" id="Description">
-                                    <ul style="margin-top: 30px; ">TECHNICAL FIELD
-
-                                    The Utility model relates snow boots technology, specifically a new inflatable snow boots. Background technique
-                                    Snow boots winter season as a practical footwear, popular in recent years. However, existing municipal court in snow deep snow boots when walking area, there will be a security risk. Therefore, the prior art still has the following problems:
-                                    1. The snow is not easy to pass;
-                                    2. Waterproof performance is poor;
-                                    3. Using more simple;
-                                    4. Inconvenient to use</div>
-                                  <div role="tabpanel" class="tab-pane" id="Claims">
-                                    <ul style="margin-top: 30px;">1. A New inflatable snow boots, characterised by: including inflatable mattress, inflatable cushion front-end structure of a circular arc, inflatable cushions backend triangular structure, inflatable bottom portion is provided with a wear-resistant reinforcing layer, intermediate inflatable mattress has snow boots place unit, placed on the surface of the snow boots with a plurality of concave portions, snow boots, snow boots placed in the unit in place, and with a bandage fixed.
-                                    2. According to the new inflatable snow boots as claimed in claim 1, characterised in that: said inflatable cushions for snow boots twice the area of the sole.
-                                    3. According to the new inflatable snow boots according to claim 2, wherein;  the sole including the neel of the snow boots, the foot and front foot, with a plurality of circular projections block heel and the front food, arranged along</div>
-                                  </ul>
-                                    <div role="tabpanel" class="tab-pane" id="Drawings"> <ul style="margin-top: 30px;">-
-
-                                      DRAWING IMAGES</div>
-                                </div>
-                              
-                              </div>
-
-                              <div class="col-sm-12 col-md-6" >
-                                            <!-- Tab panes 2 -->
-                                            <div class="tab-content" id="tab-2">
-                                              <div role="tabpanel" class="tab-pane active" id="tab-2-Bibliographic-data"> 
-                                                <ul style="margin-top: 30px;">  
-                                                  <li>
-                                                    <label for="name" class="bold-label">Application Number</label>
-                                                    <span>10202002094A</span>
-                                                  </li>
-                                                  <li>
-                                                    <label for="email" class="bold-label">Application Status</label>
-                                                    <span>Pending (Published)</span>
-                                                  </li>
-                                                  <li>
-                                                    <label for="message" class="bold-label">Filing Date</label>
-                                                    <span>2018-1-16</span>
-                                                  </li>
-                                                  <li>
-                                                    <label for="message" class="bold-label">Lodgement Date</label>
-                                                    <span>2020-01-16</span>
-                                                  </li>
-                                                  <li>
-                                                    <label for="message" class="bold-label">Declaration of Priority</label>
-                                                    <span>10202002094R . 2019-11-11 . China</span>
-                                                  </li>
-                                                  <li>
-                                                    <label for="message" class="bold-label">Title of Invention</label>
-                                                    <span>Boots Design</span>
-                                                  </li>
-                                                  <li>
-                                                    <label for="message" class="bold-label">Applicant Name</label>
-                                                    <span>DONYANG BUILDING</span>
-                                                  </li>
-                                                  <li>
-                                                    <label for="message" class="bold-label">Sole Proprietor or Partner's Name</label>
-                                                    <span>David Tan</span>
-                                                  </li>
-                                                  <li>
-                                                    <label for="message" class="bold-label">Agent UEN/Company Code</label>
-                                                    <span>C10001212Z</span>
-                                                  </li>
-                                                  <li>
-                                                    <label for="message" class="bold-label">Agent Name</label>
-                                                    <span>BAO HUIZHONG</span>
-                                                  </li>
-                                                  <li>
-                                                    <label for="message" class="bold-label">Action Representing</label>
-                                                    <span>-</span>
-                                                  </li>
-                                                  <li>
-                                                    <label for="message" class="bold-label">Representative or C/O Name</label>
-                                                    <span>BAO HUIZHONG; WU JIANGPING</span>
-                                                  </li>
-                                                  <li>
-                                                    <label for="message" class="bold-label">Inventor(s)</label>
-                                                    <span>David Tan</span>
-                                                  </li>
-                                                  <li>
-                                                    <label for="message" class="bold-label">International Patent Classification</label>
-                                                    <span>A43B13/20;</span>
-                                                  </li>
-                                                  <li>
-                                                    <label for="message" class="bold-label">Drawings</label>
-                                                    <span>-</span>
-                                                  </li>
-            
-                                                </ul>
-                                              </div>
-                                              
-                                              
-                                              <div role="tabpanel" class="tab-pane" id="tab-2-Description">
-                                                <ul style="margin-top: 30px;">TECHNICAL FIELD
-            
-                                                The Utility model relates snow boots technology, specifically a new inflatable snow boots. Background technique
-                                                Snow boots winter season as a practical footwear, popular in recent years. However, existing municipal court in snow deep snow boots when walking area, there will be a security risk. Therefore, the prior art still has the following problems:
-                                                1. The snow is not easy to pass;
-                                                2. Waterproof performance is poor;
-                                                3. Using more simple;
-                                                4. Inconvenient to use
-                                              </ul>
-                                              </div>
-                                              <div role="tabpanel" class="tab-pane" id="Claims">
-                                                <ul style="margin-top: 30px; ">1. A New inflatable snow boots, characterised by: including inflatable mattress, inflatable cushion front-end structure of a circular arc, inflatable cushions backend triangular structure, inflatable bottom portion is provided with a wear-resistant reinforcing layer, intermediate inflatable mattress has snow boots place unit, placed on the surface of the snow boots with a plurality of concave portions, snow boots, snow boots placed in the unit in place, and with a bandage fixed.
-                                                2. According to the new inflatable snow boots as claimed in claim 1, characterised in that: said inflatable cushions for snow boots twice the area of the sole.
-                                                3. According to the new inflatable snow boots according to claim 2, wherein;  the sole including the neel of the snow boots, the foot and front foot, with a plurality of circular projections block heel and the front food, arranged along
-                                              </ul>
-                                              </div>
-                                              
-                                                <div role="tabpanel" class="tab-pane" id="Drawings"> 
-                                                  <ul style="margin-top: 30px; ">-
-            
-                                                  DRAWING IMAGES
-                                                </ul>
-                                                </div>
-                                              </div>
-                                          </table> 
+                                        </td>
+                                        <td data-title="table-drawing" id="table-drawing">
+                                          
+                                          <p>(DRAWING IMAGE)</p>
+                                        </td>
+                                        <td data-title="Objection">
+                                          <p><strong>1. Novel aerify snow boots</strong></p>
+                                          <p>10202002094R・DONYANG BUILDING</p>
+                                          <p>Priority Claim Date: 2019-11-11・Journal Date: 2020-01-16</p>
+                                          <div class="paragraph">
+                                          <p>The utility model discloses a novel aerify snow booys, including the inflatable packer, the inflatable packer front end is a circular wear structure, and the unflatable packer
+                                            rear end is the triangle-shaped structure
+                                          </p>
                                         </div>
-                                      </div>
-                                  </div>
+                                        </td>
+                                      </tr>
+                                      <tr onclick="rowClicked(this)" data-tab-id="tab-2">
+                                        <td data-title="Select">
+                                          <div class="checkbox checkbox-info">
+                                            <input type="checkbox" id="objbox2" value="">
+                                            <label for="objbox2"></label>
+                                          </div>
+                                        </td>
+                                        <td data-title="table-drawing" id="table-drawing">
+                                          <p>(DRAWING IMAGE)</p>
+                                        </td>
+                                        <td data-title="Objection">
+                                          <p><strong>2. SEPARATE BOOTS</strong></p>
+                                          <p>10202002094A・KIM YONG JUN</p>
+                                          <p>Priority Claim Date: 2019-11-11・Journal Date: 2020-01-16</p>
+                                          <div class="paragraph">
+                                          <p>Leather boots are provided, which combine the bootys part and the shoes part when in use and separate the boots part and the shoes pa...
+                                          </p>
+                                        </div>
+                                        </td>
+                                      </tr>
+                                      <tr onclick="rowClicked(this)" data-tab-id="tab-2">
+                                        <td data-title="Select">
+                                          <div class="checkbox checkbox-info">
+                                            <input type="checkbox" id="objbox3" value="">
+                                            <label for="objbox3"></label>
+                                          </div>
+                                        </td>
+                                        <td data-title="table-drawing" id="table-drawing">
+                                          <p>(DRAWING IMAGE)</p>
+                                        </td>
+                                        <td data-title="Objection">
+                                          <p><strong>3. Refrigerator</strong></p>
+                                          <p>10202002094R・STATE CORP CHINA</p>
+                                          <div class="paragraph">
+                                          <p>Priority Claim Date: 2019-11-11・Journal Date: 2020-01-16</p>
+                                          <p>The utility model discloses a novel aerify snow booys, including the inflatable packer, the inflatable packer front end is a circular wear structure, and the unflatable packer
+                                            rear end is the triangle-shaped structure
+                                          </p>
+                                        </div>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
                               </div>
-                          </div> 
-                      </div>
-                  </div> 
-              </div>
+                            <div>
+                              <!-- Nav tabs -->
+                              <div class="col-sm-12 col-md-6" ><ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active"><a href="#Bibliographic-data" aria-controls="home" role="tab" data-toggle="tab">Bibliographic data</a></li>
+                                <li role="presentation"><a href="#Description" aria-controls="profile" role="tab" data-toggle="tab">Description</a></li>
+                                <li role="presentation"><a href="#Claims" aria-controls="messages" role="tab" data-toggle="tab">Claims</a></li>
+                                <li role="presentation"><a href="#Drawings" aria-controls="settings" role="tab" data-toggle="tab">Drawings</a></li>
+                              </ul>
+                            
+                              <!-- Tab panes -->
+                              <div class="tab-content" id="tab-1">
+                                <div role="tabpanel" class="tab-pane active" id="Bibliographic-data"> 
+                                  <ul style="margin-top: 30px;">  
+                                    <li>
+                                      <label for="name" class="bold-label">Application Number</label>
+                                      <span>10202002094R</span>
+                                    </li>
+                                    <li>
+                                      <label for="email" class="bold-label">Application Status</label>
+                                      <span>Pending (Published)</span>
+                                    </li>
+                                    <li>
+                                      <label for="message" class="bold-label">Filing Date</label>
+                                      <span>2018-1-16</span>
+                                    </li>
+                                    <li>
+                                      <label for="message" class="bold-label">Lodgement Date</label>
+                                      <span>2020-01-16</span>
+                                    </li>
+                                    <li>
+                                      <label for="message" class="bold-label">Declaration of Priority</label>
+                                      <span>10202002094R . 2019-11-11 . China</span>
+                                    </li>
+                                    <li>
+                                      <label for="message" class="bold-label">Title of Invention</label>
+                                      <span>Boots Design</span>
+                                    </li>
+                                    <li>
+                                      <label for="message" class="bold-label">Applicant Name</label>
+                                      <span>DONYANG BUILDING</span>
+                                    </li>
+                                    <li>
+                                      <label for="message" class="bold-label">Sole Proprietor or Partner's Name</label>
+                                      <span>David Tan</span>
+                                    </li>
+                                    <li>
+                                      <label for="message" class="bold-label">Agent UEN/Company Code</label>
+                                      <span>C10001212Z</span>
+                                    </li>
+                                    <li>
+                                      <label for="message" class="bold-label">Agent Name</label>
+                                      <span>BAO HUIZHONG</span>
+                                    </li>
+                                    <li>
+                                      <label for="message" class="bold-label">Action Representing</label>
+                                      <span>-</span>
+                                    </li>
+                                    <li>
+                                      <label for="message" class="bold-label">Representative or C/O Name</label>
+                                      <span>BAO HUIZHONG; WU JIANGPING</span>
+                                    </li>
+                                    <li>
+                                      <label for="message" class="bold-label">Inventor(s)</label>
+                                      <span>David Tan</span>
+                                    </li>
+                                    <li>
+                                      <label for="message" class="bold-label">International Patent Classification</label>
+                                      <span>A43B13/20;</span>
+                                    </li>
+                                    <li>
+                                      <label for="message" class="bold-label">Drawings</label>
+                                      <span>-</span>
+                                    </li>
+
+                                  </ul>
+                                </div>
+                                
+                                <div role="tabpanel" class="tab-pane" id="Description">
+                                  <ul style="margin-top: 30px; ">TECHNICAL FIELD
+
+                                  The Utility model relates snow boots technology, specifically a new inflatable snow boots. Background technique
+                                  Snow boots winter season as a practical footwear, popular in recent years. However, existing municipal court in snow deep snow boots when walking area, there will be a security risk. Therefore, the prior art still has the following problems:
+                                  1. The snow is not easy to pass;
+                                  2. Waterproof performance is poor;
+                                  3. Using more simple;
+                                  4. Inconvenient to use</div>
+                                <div role="tabpanel" class="tab-pane" id="Claims">
+                                  <ul style="margin-top: 30px;">1. A New inflatable snow boots, characterised by: including inflatable mattress, inflatable cushion front-end structure of a circular arc, inflatable cushions backend triangular structure, inflatable bottom portion is provided with a wear-resistant reinforcing layer, intermediate inflatable mattress has snow boots place unit, placed on the surface of the snow boots with a plurality of concave portions, snow boots, snow boots placed in the unit in place, and with a bandage fixed.
+                                  2. According to the new inflatable snow boots as claimed in claim 1, characterised in that: said inflatable cushions for snow boots twice the area of the sole.
+                                  3. According to the new inflatable snow boots according to claim 2, wherein;  the sole including the neel of the snow boots, the foot and front foot, with a plurality of circular projections block heel and the front food, arranged along</div>
+                                </ul>
+                                  <div role="tabpanel" class="tab-pane" id="Drawings"> <ul style="margin-top: 30px;">-
+
+                                    DRAWING IMAGES</div>
+                              </div>
+                            
+                            </div>
+
+                            <div class="col-sm-12 col-md-6" >
+                                          <!-- Tab panes 2 -->
+                                          <div class="tab-content" id="tab-2">
+                                            <div role="tabpanel" class="tab-pane active" id="tab-2-Bibliographic-data"> 
+                                              <ul style="margin-top: 30px;">  
+                                                <li>
+                                                  <label for="name" class="bold-label">Application Number</label>
+                                                  <span>10202002094A</span>
+                                                </li>
+                                                <li>
+                                                  <label for="email" class="bold-label">Application Status</label>
+                                                  <span>Pending (Published)</span>
+                                                </li>
+                                                <li>
+                                                  <label for="message" class="bold-label">Filing Date</label>
+                                                  <span>2018-1-16</span>
+                                                </li>
+                                                <li>
+                                                  <label for="message" class="bold-label">Lodgement Date</label>
+                                                  <span>2020-01-16</span>
+                                                </li>
+                                                <li>
+                                                  <label for="message" class="bold-label">Declaration of Priority</label>
+                                                  <span>10202002094R . 2019-11-11 . China</span>
+                                                </li>
+                                                <li>
+                                                  <label for="message" class="bold-label">Title of Invention</label>
+                                                  <span>Boots Design</span>
+                                                </li>
+                                                <li>
+                                                  <label for="message" class="bold-label">Applicant Name</label>
+                                                  <span>DONYANG BUILDING</span>
+                                                </li>
+                                                <li>
+                                                  <label for="message" class="bold-label">Sole Proprietor or Partner's Name</label>
+                                                  <span>David Tan</span>
+                                                </li>
+                                                <li>
+                                                  <label for="message" class="bold-label">Agent UEN/Company Code</label>
+                                                  <span>C10001212Z</span>
+                                                </li>
+                                                <li>
+                                                  <label for="message" class="bold-label">Agent Name</label>
+                                                  <span>BAO HUIZHONG</span>
+                                                </li>
+                                                <li>
+                                                  <label for="message" class="bold-label">Action Representing</label>
+                                                  <span>-</span>
+                                                </li>
+                                                <li>
+                                                  <label for="message" class="bold-label">Representative or C/O Name</label>
+                                                  <span>BAO HUIZHONG; WU JIANGPING</span>
+                                                </li>
+                                                <li>
+                                                  <label for="message" class="bold-label">Inventor(s)</label>
+                                                  <span>David Tan</span>
+                                                </li>
+                                                <li>
+                                                  <label for="message" class="bold-label">International Patent Classification</label>
+                                                  <span>A43B13/20;</span>
+                                                </li>
+                                                <li>
+                                                  <label for="message" class="bold-label">Drawings</label>
+                                                  <span>-</span>
+                                                </li>
+          
+                                              </ul>
+                                            </div>
+                                            
+                                            
+                                            <div role="tabpanel" class="tab-pane" id="tab-2-Description">
+                                              <ul style="margin-top: 30px;">TECHNICAL FIELD
+          
+                                              The Utility model relates snow boots technology, specifically a new inflatable snow boots. Background technique
+                                              Snow boots winter season as a practical footwear, popular in recent years. However, existing municipal court in snow deep snow boots when walking area, there will be a security risk. Therefore, the prior art still has the following problems:
+                                              1. The snow is not easy to pass;
+                                              2. Waterproof performance is poor;
+                                              3. Using more simple;
+                                              4. Inconvenient to use
+                                            </ul>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane" id="Claims">
+                                              <ul style="margin-top: 30px; ">1. A New inflatable snow boots, characterised by: including inflatable mattress, inflatable cushion front-end structure of a circular arc, inflatable cushions backend triangular structure, inflatable bottom portion is provided with a wear-resistant reinforcing layer, intermediate inflatable mattress has snow boots place unit, placed on the surface of the snow boots with a plurality of concave portions, snow boots, snow boots placed in the unit in place, and with a bandage fixed.
+                                              2. According to the new inflatable snow boots as claimed in claim 1, characterised in that: said inflatable cushions for snow boots twice the area of the sole.
+                                              3. According to the new inflatable snow boots according to claim 2, wherein;  the sole including the neel of the snow boots, the foot and front foot, with a plurality of circular projections block heel and the front food, arranged along
+                                            </ul>
+                                            </div>
+                                            
+                                              <div role="tabpanel" class="tab-pane" id="Drawings"> 
+                                                <ul style="margin-top: 30px; ">-
+          
+                                                DRAWING IMAGES
+                                              </ul>
+                                              </div>
+                                            </div>
+                                        </table> 
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                </div> 
             </div>
-          </div> 
+          </div>
+        </div>  
                                           
                                           
                                           <!-- End Objections Table -->
@@ -679,10 +689,11 @@ table.search-results {
     <script src="assets/js/components.js"></script>
     <script src="assets/js/global.js"></script>
     <script src="assets/js/custom.js"></script>  
-    <script src="assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+  
     <script src="assets/dropzone/dist/dropzone.js"></script>
      <script src="myassets/DataTables/datatables.js"></script>
     <script src="assets/js/bootstrap-select.min.js"></script>  
+    
     
      <script>
     $('#datetimepicker').datetimepicker({ 
@@ -876,13 +887,9 @@ $(document).ready(function() {
                    "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>"
         });
     });
-    function toggleDropdown(dropdownId) {
-  var dropdown = document.getElementById(dropdownId);
-  if (dropdown.classList.contains("show")) {
-    dropdown.classList.remove("show");
-  } else {
-    dropdown.classList.add("show");
-  }
+    function toggleDropdown(containerId) {
+  var dropdown = document.getElementById(containerId);
+  dropdown.classList.toggle("show");
 }
 function toggleDropdown(id) {
   var dropdown = document.getElementById(id);
@@ -898,6 +905,7 @@ var listViewDropdown = document.getElementById("category-dropdown-list-view");
 listViewButton.addEventListener("click", function() {
   listViewDropdown.classList.toggle("show");
 });
+$('select').selectpicker();
 </script>
   </body>
 </html>
